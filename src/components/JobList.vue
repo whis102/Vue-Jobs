@@ -1,6 +1,6 @@
 <script setup>
 import Job from "./Job.vue";
-import jobData from "/Users/congnguyen/Documents/VueCV/src/jobs.json";
+import jobData from "@/jobs.json";
 import { ref } from "vue";
 
 const jobs = ref(jobData);
