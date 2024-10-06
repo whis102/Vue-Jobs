@@ -1,10 +1,10 @@
 <script setup>
 import { RouterLink } from "vue-router";
 import Job from "./Job.vue";
-import jobData from "@/jobs.json";
-import { ref } from "vue";
+import { onMounted, ref } from "vue";
+import axios from "axios";
 
-const jobs = ref(jobData);
+const jobs = ref([]);
 
 defineProps({
   limit: Number,
@@ -12,6 +12,15 @@ defineProps({
     type: Boolean,
     default: false,
   },
+});
+
+onMounted(async () => {
+  try {
+    const response = await axios.get("http://localhost:8000/jobs");
+    jobs.value = response.data;
+  } catch (error) {
+    console.error();
+  }
 });
 </script>
 
